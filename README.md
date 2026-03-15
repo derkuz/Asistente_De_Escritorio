@@ -12,6 +12,11 @@ Sigue estos pasos para configurar tu entorno de desarrollo local.
 
 *   [Python 3.10+](https://www.python.org/downloads/)
 *   [Git](https://git-scm.com/downloads/)
+*   **xdotool**: Necesario para el movimiento programático de la ventana en entornos Wayland como KDE Plasma.
+    *   En **Arch Linux / CachyOS**:
+        ```bash
+        sudo pacman -S xdotool
+        ```
 *   (Opcional pero recomendado) [GitHub CLI](https://cli.github.com/)
 
 ### Pasos de Instalación
@@ -51,7 +56,10 @@ Una vez que la configuración esté completa, podrás ejecutar la aplicación co
 
 ```bash
 # (Asegúrate de que tu entorno virtual esté activado)
-python main.py
+# Para Wayland (ej. KDE Plasma), es necesario ejecutar con Xwayland para el movimiento de la ventana:
+QT_QPA_PLATFORM=xcb python main.py
+# Para entornos X11, o si QT_QPA_PLATFORM=xcb no es necesario:
+# python main.py
 ```
 *(Nota: El archivo `main.py` será el punto de entrada principal que crearemos).*
 
